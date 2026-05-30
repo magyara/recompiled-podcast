@@ -1,27 +1,20 @@
-/* =============================================================
-   Recompiled Podcast — Design tokens
-   Color, type, spacing, radius, shadow, motion.
-   Light-mode default. Dark mode via [data-theme="dark"].
-   ============================================================= */
-
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Artifika&family=Courgette&family=Kavoon&display=swap');
 
 :root {
   /* ---------- Brand palette ----------------------------------- */
-  /* Purple scale — cool, slightly blue-leaning violet. Not pink. */
   --violet-50:  #f4f1ff;
   --violet-100: #ebe4ff;
   --violet-200: #d6c8ff;
   --violet-300: #b8a1ff;
-  --violet-400: #9a78ff;   /* light purple — soft accents, hover */
-  --violet-500: #7c52ff;   /* medium purple — primary brand */
-  --violet-600: #6535e6;   /* pressed, deep accent */
+  --violet-400: #9a78ff;
+  --violet-500: #7c52ff;
+  --violet-600: #6535e6;
   --violet-700: #4f25b8;
   --violet-800: #3a1a87;
   --violet-900: #241055;
   --violet-950: #14082f;
 
-  /* Plum / near-black for dark surfaces — keeps the purple cast */
   --plum-50:  #f7f6fb;
   --plum-100: #ecebf3;
   --plum-200: #d6d3e3;
@@ -34,13 +27,12 @@
   --plum-900: #0c0a1a;
   --plum-950: #060410;
 
-  /* Signal colors — used sparingly, tuned to live next to violet */
   --signal-success: #2bb673;
   --signal-warning: #f0a92f;
   --signal-error:   #e54a5f;
   --signal-info:    var(--violet-500);
 
-  /* ---------- Semantic tokens (light mode) -------------------- */
+  /* ---------- Semantic tokens -------------------- */
   --bg:           #faf9fd;        /* page bg — warm-cool off-white */
   --bg-elevated:  #ffffff;        /* cards, panels */
   --bg-sunken:    var(--violet-50);
@@ -57,6 +49,8 @@
   --brand-soft:   var(--violet-100);
   --brand-fg:     var(--violet-700);
 
+  --banner-bg:     var(--violet-300);
+
   /* Inverse / "bright hero" surface — the saturated brand moment.
      Use for the subscribe block, brand callouts, and the inverse card. */
   --surface-inverse:       var(--violet-700);   /* #4f25b8 — fill */
@@ -72,7 +66,7 @@
   --focus-ring:   var(--violet-400);
 
   /* ---------- Type ------------------------------------------- */
-  --font-display: 'Bricolage Grotesque', 'Söhne', 'Helvetica Neue', sans-serif;
+  --font-display: 'Artifika', 'Söhne', 'Helvetica Neue', sans-serif;
   --font-body:    'Manrope', 'Söhne', 'Helvetica Neue', sans-serif;
   --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 
@@ -148,36 +142,9 @@
   --grid-gutter:    24px;
 }
 
-/* =========== Dark mode ======================================= */
-[data-theme="dark"] {
-  --bg:           var(--plum-950);
-  --bg-elevated:  var(--plum-800);
-  --bg-sunken:    var(--plum-900);
-  --bg-inverse:   #ffffff;
-
-  --fg:           #f5f3ff;
-  --fg-muted:     #a8a2c4;
-  --fg-subtle:    #6f6a8c;
-  --fg-inverse:   var(--plum-900);
-
-  --brand:        var(--violet-400);
-  --brand-hover:  var(--violet-300);
-  --brand-soft:   rgba(124, 82, 255, 0.14);
-  --brand-fg:     var(--violet-200);
-
-  --border:       rgba(255, 255, 255, 0.08);
-  --border-strong:rgba(255, 255, 255, 0.16);
-  --border-brand: var(--violet-500);
-
-  --shadow-xs: 0 1px 0 rgba(0, 0, 0, 0.4);
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.6);
-  --shadow-md: 0 8px 24px -8px rgba(0, 0, 0, 0.7);
-  --shadow-lg: 0 24px 48px -12px rgba(0, 0, 0, 0.8);
-  --glow-brand: 0 0 0 1px rgba(154, 120, 255, 0.45), 0 8px 32px -6px rgba(124, 82, 255, 0.6);
-}
-
 /* =========== Semantic element styles ========================= */
 body {
+  margin: 0;
   font-family: var(--font-body);
   font-size: var(--text-base);
   line-height: var(--leading-normal);
@@ -260,4 +227,3 @@ a {
 a:hover { color: var(--brand-hover); }
 
 ::selection { background: var(--violet-200); color: var(--plum-900); }
-[data-theme="dark"] ::selection { background: var(--violet-700); color: #fff; }

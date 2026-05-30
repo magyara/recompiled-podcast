@@ -6,27 +6,32 @@
 
 <article
   style="
-    background: var(--bg-elevated);
+    position: relative;
+    background: var(--surface-inverse);
+    color: var(--on-surface-inverse);
     border: 1px solid var(--border);
     border-radius: 16px;
     padding: 24px;
     display: flex; flex-direction: column; gap: 16px;
+    overflow: hidden;
   "
 >
+    <div
+      style="
+        position: absolute; inset: 0;
+        background: radial-gradient(circle at 90% -10%, var(--surface-inverse-glow), transparent 60%);
+        pointer-events: none;
+      "
+    ></div>
+
   <div style="display:flex;gap:16px;align-items:center;">
     <img src={host.img} alt={host.name} style="width:64px;height:64px;border-radius:14px;flex-shrink:0;" />
     <div>
-      <h3
-        style="
-          font-family: var(--font-display); font-weight: 600;
-          font-size: 22px; letter-spacing: -0.02em;
-          margin: 0; color: var(--fg);
-        "
-      >{host.name}</h3>
+      <h2>{host.name}</h2>
       <div
         style="
           font-family: var(--font-body); font-size: 13px; font-weight: 500;
-          color: var(--fg-muted); margin-top: 2px;
+          color: var(--on-surface-inverse-muted); margin-top: 2px;
         "
       >{host.role}</div>
     </div>
@@ -34,7 +39,7 @@
   <p
     style="
       font-family: var(--font-body); font-size: 15px; line-height: 1.6;
-      color: var(--fg-muted); margin: 0; text-wrap: pretty;
+      color: var(--on-surface-inverse-muted); margin: 0; text-wrap: pretty;
     "
   >{host.bio}</p>
   <div style="display:flex;gap:6px;">
@@ -44,7 +49,7 @@
         aria-label={icon}
         style="
           width: 34px; height: 34px; border-radius: 8px;
-          background: transparent; color: var(--fg-muted);
+          background: transparent; color: var(--on-surface-inverse-muted);
           display: flex; align-items: center; justify-content: center;
           border: 1px solid var(--border);
           transition: all 120ms var(--ease-out);

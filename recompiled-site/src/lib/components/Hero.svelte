@@ -9,7 +9,10 @@
 <section
   style="
     position: relative;
-    background: var(--bg-sunken);
+    background-image: url('/assets/ada_banner.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     color: var(--fg);
     overflow: hidden;
     margin: 0;
@@ -18,12 +21,12 @@
   "
 >
   <div style="position:relative;max-width:880px;margin:0 auto;">
-    <Eyebrow>EP 042 · OUT NOW · MAY 14, 2026</Eyebrow>
+
     <h1
       style="
         font-family: var(--font-display);
         font-weight: 700;
-        font-size: clamp(44px, 8vw, 92px);
+        font-size: clamp(44px, 8vw, 60px);
         line-height: 0.98;
         letter-spacing: -0.035em;
         margin: 18px 0 24px;
@@ -32,20 +35,20 @@
         max-width: 820px;
       "
     >
-      A podcast about engineering, <span style="color:var(--brand);">rebuilt weekly</span>.
+      A vaugely serious podcast about <span style="color:var(--on-surface-inverse-muted);">software engineering</span>.
     </h1>
     <p
       style="
         font-family: var(--font-body);
         font-size: clamp(16px, 1.6vw, 19px);
         line-height: 1.55;
-        color: var(--fg-muted);
+        color: var(--on-surface-inverse-muted);
         max-width: 600px;
         margin: 0;
         text-wrap: pretty;
       "
     >
-      Two senior engineers, a microphone, and a pile of systems we keep rewriting. We talk about why we shipped that thing, why we&rsquo;d never ship it again, and what we&rsquo;d actually do on Monday.
+      Complex topics broken down and recompiled with diverse perspectives and a touch of humor
     </p>
     <div style="display:flex;gap:10px;margin-top:36px;flex-wrap:wrap;">
       <Button variant="primary" size="lg" icon="play" on:click={onListen}>Listen on Spotify</Button>

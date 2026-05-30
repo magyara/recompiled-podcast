@@ -8,7 +8,7 @@
 
   const variants = {
     primary:   'background:var(--brand);color:#fff;border:0;box-shadow:0 8px 24px -10px rgba(124,82,255,.55);',
-    secondary: 'background:transparent;color:var(--fg);border:1.5px solid var(--border-strong);',
+    secondary: 'background:transparent;color:var(--border-strong);border:1.5px solid var(--border-strong);',
     soft:      'background:var(--brand-soft);color:var(--brand-fg);border:0;',
     ghost:     'background:transparent;color:var(--brand);border:0;padding:0;',
     inverse:   'background:#fff;color:var(--fg);border:0;',

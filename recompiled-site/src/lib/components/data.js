@@ -11,14 +11,14 @@ export const COVERS = ['#ebe4ff', '#d6c8ff', '#b8a1ff', '#f4f1ff', '#ebe4ff', '#
 
 export const HOSTS = [
   {
-    name: 'Jordan Mensah',
+    name: 'Abigail Lovelace',
     role: 'Staff engineer · Stripe',
     bio: 'Backend, queues, and the boring middle of the stack. Has shipped the same migration three times at three companies. Will tell you about all of them.',
     img: '../../assets/host-a-placeholder.svg',
     links: [['twitter', '#'], ['github', '#'], ['link', '#']],
   },
   {
-    name: 'Sana Khoury',
+    name: 'Ariel Magyar',
     role: 'Principal engineer · Vercel',
     bio: 'Frontend, performance, and the loud opinions. Believes the page should be done loading by the time you reach for the trackpad.',
     img: '../../assets/host-b-placeholder.svg',

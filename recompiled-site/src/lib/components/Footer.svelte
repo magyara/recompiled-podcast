@@ -40,6 +40,5 @@
     "
   >
     <div style="font-family:var(--font-mono);font-size:11px;color:var(--fg-subtle);letter-spacing:0.06em;">© 2026 RECOMPILED</div>
-    <div style="font-family:var(--font-mono);font-size:11px;color:var(--fg-subtle);">Built on Monday.</div>
   </div>
 </footer>
