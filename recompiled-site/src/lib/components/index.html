@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Recompiled — UI kit (Svelte)</title>
+<link rel="icon" href="../../assets/logomark.svg" />
+<link rel="stylesheet" href="../../colors_and_type.css" />
+<style>
+  html, body { margin: 0; padding: 0; background: var(--bg); }
+  @media (max-width: 760px) {
+    .rc-nav-desktop { display: none !important; }
+    .rc-nav-mobile  { display: inline-flex !important; }
+  }
+  .rc-btn:hover  { filter: brightness(0.96); }
+  .rc-btn:active { transform: scale(0.96); }
+  a { transition: color 120ms var(--ease-out); }
+  body { padding-bottom: 110px; }
+  /* Boot splash */
+  #boot {
+    position: fixed; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-mono); font-size: 12px; color: var(--fg-subtle);
+    background: var(--bg);
+    z-index: 9999;
+    transition: opacity 200ms ease-out;
+  }
+  #boot.gone { opacity: 0; pointer-events: none; }
+  #boot .dot { display: inline-block; width: 6px; height: 6px; background: var(--brand); border-radius: 99px; animation: pulse 1s ease-in-out infinite; margin-right: 8px; }
+  @keyframes pulse { 0%,100%{opacity:.3} 50%{opacity:1} }
+</style>
+
+<script type="importmap">
+{
+  "imports": {
+    "svelte":          "https://esm.sh/svelte@4.2.19",
+    "svelte/internal": "https://esm.sh/svelte@4.2.19/internal",
+    "svelte/internal/disclose-version": "https://esm.sh/svelte@4.2.19/internal/disclose-version"
+  }
+}
+</script>
+</head>
+<body>
+
+<div id="boot"><span class="dot"></span>compiling svelte components…</div>
+<div id="root"></div>
+
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<script type="module">
+  import { compile } from 'https://esm.sh/svelte@4.2.19/compiler';
+
+  const cache = new Map();          // path -> blob URL of compiled module
+  const inflight = new Map();       // path -> Promise (to dedupe circular fetches)
+
+  async function load(path) {
+    if (cache.has(path))    return cache.get(path);
+    if (inflight.has(path)) return inflight.get(path);
+
+    const p = (async () => {
+      const src = await fetch(path + '?v=2').then(r => r.text());
+      const { js, warnings } = compile(src, {
+        generate: 'dom',
+        filename: path,
+        css: 'injected',
+      });
+      if (warnings && warnings.length) {
+        warnings.forEach(w => console.warn(`[svelte:${path}]`, w.message));
+      }
+      let code = js.code;
+
+      // Find all relative imports (.svelte and .js) and rewrite to blob URLs.
+      const importRe = /from\s+['"](\.\/[^'"]+\.(?:svelte|js))['"]/g;
+      const seen = new Set();
+      const matches = [];
+      let m;
+      while ((m = importRe.exec(code)) !== null) {
+        if (!seen.has(m[1])) { seen.add(m[1]); matches.push(m[1]); }
+      }
+
+      // Compile/import dependencies first (parallel where possible).
+      const resolved = {};
+      await Promise.all(matches.map(async rel => {
+        const child = rel.slice(2);   // strip './'
+        if (child.endsWith('.svelte')) {
+          resolved[rel] = await load(child);
+        } else {
+          // Plain JS modules — return as a blob too, so relative resolution works.
+          resolved[rel] = await loadJS(child);
+        }
+      }));
+
+      // Replace each `from './Foo.svelte'` with the blob URL.
+      for (const [rel, url] of Object.entries(resolved)) {
+        const safeRel = rel.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        code = code.replace(
+          new RegExp(`from\\s+['"]${safeRel}['"]`, 'g'),
+          `from '${url}'`
+        );
+      }
+
+      const blob = new Blob([code], { type: 'application/javascript' });
+      const url  = URL.createObjectURL(blob);
+      cache.set(path, url);
+      return url;
+    })();
+
+    inflight.set(path, p);
+    return p;
+  }
+
+  async function loadJS(path) {
+    if (cache.has(path)) return cache.get(path);
+    const src = await fetch(path + '?v=2').then(r => r.text());
+    const blob = new Blob([src], { type: 'application/javascript' });
+    const url = URL.createObjectURL(blob);
+    cache.set(path, url);
+    return url;
+  }
+
+  try {
+    const appUrl = await load('App.svelte');
+    const mod = await import(appUrl);
+    new mod.default({ target: document.getElementById('root') });
+    // Ensure Lucide replaces placeholders after mount
+    if (window.lucide) window.lucide.createIcons();
+    setTimeout(() => { if (window.lucide) window.lucide.createIcons(); }, 50);
+    document.getElementById('boot').classList.add('gone');
+    setTimeout(() => document.getElementById('boot').remove(), 250);
+  } catch (err) {
+    console.error('Boot failed', err);
+    const boot = document.getElementById('boot');
+    boot.innerHTML = `<div style="max-width:540px;color:var(--signal-error);font-family:var(--font-mono);font-size:12px;line-height:1.6;white-space:pre-wrap;padding:24px;">Boot failed:\n${err.stack || err.message || err}</div>`;
+  }
+</script>
+</body>
+</html>
