@@ -3,14 +3,16 @@
   import Eyebrow from './Eyebrow.svelte';
   import { EPISODES, COVERS } from './data.js';
 
+  export let episodes = [];
   export let onPlay = () => {};
   export let nowPlaying = null;
+
+  const episodesToRender = episodes.length ? episodes : EPISODES;
 </script>
 
 <section style="max-width:1080px;margin:0 auto;padding:clamp(64px,9vw,100px) 24px 40px;">
   <header style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:36px;">
     <div>
-      <Eyebrow>LATEST · PULLED FROM SPOTIFY</Eyebrow>
       <h2
         style="
           font-family: var(--font-display); font-weight: 700;
@@ -24,10 +26,10 @@
     </a>
   </header>
   <div style="display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));">
-    {#each EPISODES as ep, i (ep.n)}
+    {#each episodesToRender as ep, i (ep.n)}
       <EpisodeCard
         {ep}
-        cover={COVERS[i % COVERS.length]}
+        cover={ep.cover || COVERS[i % COVERS.length]}
         isPlaying={nowPlaying && nowPlaying.n === ep.n}
         {onPlay}
       />

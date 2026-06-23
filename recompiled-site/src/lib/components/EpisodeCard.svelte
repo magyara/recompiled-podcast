@@ -8,6 +8,17 @@
   export let onPlay = () => {};
 </script>
 
+<style>
+  :global(div > p) {
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+  :global(div > p > a) {
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+</style>
+
 <article
   style="
     background: var(--bg-elevated);
@@ -24,7 +35,10 @@
   <div
     style="
       width: 64px; height: 64px; border-radius: 10px; flex-shrink: 0;
-      background: {cover};
+      background: {ep.cover && ep.cover.startsWith('http') ? 'transparent' : cover};
+      background-image: {ep.cover && ep.cover.startsWith('http') ? `url('${ep.cover}')` : 'none'};
+      background-size: cover;
+      background-position: center;
       display: flex; align-items: center; justify-content: center;
       font-family: var(--font-display); font-weight: 700; font-size: 22px;
       color: var(--brand-fg); letter-spacing: -0.02em;
@@ -39,12 +53,17 @@
         margin: 4px 0 6px; color: var(--fg); text-wrap: pretty;
       "
     >{ep.title}</h3>
-    <p
+    <div
       style="
         font-family: var(--font-body); font-size: 13px; line-height: 1.5;
         color: var(--fg-muted); margin: 0 0 10px; text-wrap: pretty;
+        overflow-wrap: break-word;
+        word-break: break-word;
+        overflow: hidden;
       "
-    >{ep.desc}</p>
+    >
+      {@html ep.desc}
+    </div>
     <div style="display:flex;gap:6px;flex-wrap:wrap;">
       {#each ep.tags as t}
         <span

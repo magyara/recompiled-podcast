@@ -6,11 +6,13 @@
   import Player from '$lib/components/Player.svelte';
   import Subscribe from '$lib/components/Subscribe.svelte';
   import Footer from '$lib/components/Footer.svelte';
+
+  export let data;
 </script>
 
 <Nav />
 <Hero />
-<EpisodeList />
+<EpisodeList episodes={data.episodes} />
 <Hosts />
 <Player />
 <!-- <Subscribe /> -->

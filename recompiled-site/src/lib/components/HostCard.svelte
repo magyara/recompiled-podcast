@@ -24,17 +24,16 @@
       "
     ></div>
 
-  <div style="display:flex;gap:16px;align-items:center;">
-    <img src={host.img} alt={host.name} style="width:64px;height:64px;border-radius:14px;flex-shrink:0;" />
-    <div>
-      <h2>{host.name}</h2>
-      <div
-        style="
-          font-family: var(--font-body); font-size: 13px; font-weight: 500;
-          color: var(--on-surface-inverse-muted); margin-top: 2px;
-        "
-      >{host.role}</div>
-    </div>
+  <img src={host.img} alt={host.name} style="width:300px;height:300px;border-radius:14px;align-self:center;border:1px solid var(--border);" />
+
+  <div>
+    <h2>{host.name}</h2>
+    <div
+      style="
+        font-family: var(--font-body); font-size: 13px; font-weight: 500;
+        color: var(--on-surface-inverse-muted); margin-top: 2px;
+      "
+    >{host.role}</div>
   </div>
   <p
     style="
