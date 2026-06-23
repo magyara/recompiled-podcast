@@ -5,6 +5,7 @@
 
   export let active = 'home';
   export let onNavigate = () => {};
+  export let onListen = () => {};
 
   let scrolled = false;
   let mobileOpen = false;
@@ -60,7 +61,7 @@
         >{label}</a>
       {/each}
       <span style="width:1px;height:20px;background:var(--border);margin:0 10px;"></span>
-      <Button variant="primary" size="sm" icon="headphones" on:click={click('episodes')}>Listen</Button>
+      <Button variant="primary" size="sm" icon="headphones" on:click={onListen}>Listen</Button>
     </div>
 
     <button
@@ -83,7 +84,7 @@
         >{label}</a>
       {/each}
       <div style="margin-top:12px;">
-        <Button variant="primary" size="md" icon="headphones">Listen on Spotify</Button>
+        <Button variant="primary" size="md" icon="headphones" on:click={onListen}>Listen on Spotify</Button>
       </div>
     </div>
   {/if}

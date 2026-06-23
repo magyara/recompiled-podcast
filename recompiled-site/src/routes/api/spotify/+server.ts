@@ -42,6 +42,7 @@ export const GET: RequestHandler = async () => {
   const text = await res.text();
   const items = Array.from(text.matchAll(/<item\b[^>]*>([\s\S]*?)<\/item>/gi), (m) => m[1]);
 
+  const totalItems = items.length;
   const episodes = items.map((item, index) => {
     const title = extractTag(item, 'title') || 'Untitled episode';
     const description = extractTag(item, 'description') || extractTag(item, 'itunes:summary');
@@ -55,7 +56,7 @@ export const GET: RequestHandler = async () => {
     const pageLink = extractTag(item, 'link');
 
     return {
-      n: index + 1,
+      n: totalItems - index,
       title,
       desc: description,
       dur: duration || '',

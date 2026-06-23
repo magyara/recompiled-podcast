@@ -6,6 +6,8 @@
   export let cover;
   export let isPlaying = false;
   export let onPlay = () => {};
+
+  let isExpanded = false;
 </script>
 
 <style>
@@ -16,6 +18,9 @@
   :global(div > p > a) {
     overflow-wrap: break-word;
     word-break: break-word;
+  }
+  a {
+    text-decoration: none !important;
   }
 </style>
 
@@ -41,18 +46,27 @@
       background-position: center;
       display: flex; align-items: center; justify-content: center;
       font-family: var(--font-display); font-weight: 700; font-size: 22px;
-      color: var(--brand-fg); letter-spacing: -0.02em;
+      color: var(--bg); letter-spacing: -0.02em;
     "
-  >{ep.n}</div>
+  ></div>
   <div style="flex:1;min-width:0;">
     <Eyebrow>EP {String(ep.n).padStart(3,'0')} &middot; {ep.dur} &middot; {ep.date}</Eyebrow>
-    <h3
+    <a
+      href={ep.spotifyUrl}
+      target="_blank"
+      rel="noopener noreferrer"
       style="
         font-family: var(--font-display); font-weight: 700;
         font-size: 20px; letter-spacing: -0.02em; line-height: 1.15;
         margin: 4px 0 6px; color: var(--fg); text-wrap: pretty;
+        display: block;
+        text-decoration: none;
+        border-bottom: none;
+        transition: color 150ms var(--ease-out);
       "
-    >{ep.title}</h3>
+      on:mouseenter={(e) => e.target.style.color = 'var(--brand)'}
+      on:mouseleave={(e) => e.target.style.color = 'var(--fg)'}
+    >{ep.title}</a>
     <div
       style="
         font-family: var(--font-body); font-size: 13px; line-height: 1.5;
@@ -60,10 +74,28 @@
         overflow-wrap: break-word;
         word-break: break-word;
         overflow: hidden;
+        max-height: {isExpanded ? 'none' : '6.9em'};
+        transition: max-height 200ms var(--ease-out);
       "
     >
       {@html ep.desc}
     </div>
+    <button
+      on:click={() => (isExpanded = !isExpanded)}
+      style="
+        background: none;
+        border: none;
+        color: var(--brand);
+        font-family: var(--font-body);
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        padding: 0;
+        margin: -8px 0 0 0;
+      "
+    >
+      {isExpanded ? 'Show less' : 'Show more'}
+    </button>
     <div style="display:flex;gap:6px;flex-wrap:wrap;">
       {#each ep.tags as t}
         <span
@@ -80,17 +112,20 @@
       {/each}
     </div>
   </div>
-  <button
-    on:click={() => onPlay(ep)}
-    aria-label={isPlaying ? 'Pause' : 'Play'}
+  <a
+    href={ep.spotifyUrl}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Open episode on Spotify"
     style="
       width: 40px; height: 40px; border-radius: 999px; flex-shrink: 0;
-      background: {isPlaying ? 'var(--brand)' : 'var(--brand-soft)'};
-      border: 0; color: {isPlaying ? '#fff' : 'var(--brand-fg)'}; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
+      background: var(--brand-soft);
+      border: 0; color: var(--brand-fg); cursor: pointer;
+      display: inline-flex; align-items: center; justify-content: center;
       transition: all 120ms var(--ease-out);
+      text-decoration: none;
     "
   >
-    <Icon name={isPlaying ? 'pause' : 'play'} size={14} />
-  </button>
+    <Icon name="play" size={14} />
+  </a>
 </article>

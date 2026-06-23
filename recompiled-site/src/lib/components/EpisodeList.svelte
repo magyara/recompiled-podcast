@@ -8,6 +8,17 @@
   export let nowPlaying = null;
 
   const episodesToRender = episodes.length ? episodes : EPISODES;
+  const itemsPerPage = 6;
+  let currentPage = 0;
+
+  $: totalPages = Math.ceil(episodesToRender.length / itemsPerPage);
+  $: startIndex = currentPage * itemsPerPage;
+  $: endIndex = startIndex + itemsPerPage;
+  $: paginatedEpisodes = episodesToRender.slice(startIndex, endIndex);
+
+  function goToPage(page) {
+    currentPage = Math.max(0, Math.min(page, totalPages - 1));
+  }
 </script>
 
 <section style="max-width:1080px;margin:0 auto;padding:clamp(64px,9vw,100px) 24px 40px;">
@@ -21,12 +32,9 @@
         "
       >Latest episodes</h2>
     </div>
-    <a href="#all" style="font-family:var(--font-body);font-weight:600;font-size:14px;color:var(--brand);border:0;">
-      Browse the archive &rarr;
-    </a>
   </header>
   <div style="display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));">
-    {#each episodesToRender as ep, i (ep.n)}
+    {#each paginatedEpisodes as ep, i (ep.n)}
       <EpisodeCard
         {ep}
         cover={ep.cover || COVERS[i % COVERS.length]}
@@ -35,4 +43,24 @@
       />
     {/each}
   </div>
+  {#if totalPages > 1}
+    <div style="display:flex;justify-content:center;gap:8px;margin-top:36px;">
+      {#each Array(totalPages) as _, i}
+        <button
+          on:click={() => goToPage(i)}
+          style="
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid {currentPage === i ? 'var(--brand)' : 'var(--border-strong)'};
+            background: {currentPage === i ? 'var(--brand)' : 'transparent'};
+            cursor: pointer;
+            padding: 0;
+            transition: all 150ms var(--ease-out);
+          "
+          aria-label="Page {i + 1}"
+        />
+      {/each}
+    </div>
+  {/if}
 </section>

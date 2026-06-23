@@ -23,3 +23,18 @@
     {/each}
   </div>
 </section>
+
+<section id="about" style="max-width:1080px;margin:0 auto;padding:clamp(64px,9vw,100px) 24px;">
+  <header style="margin-bottom:36px;max-width:640px;">
+    <h2
+      style="
+        font-family: var(--font-display); font-weight: 700;
+        font-size: clamp(28px, 4.4vw, 44px); letter-spacing: -0.03em;
+        line-height: 1.05; margin: 10px 0 14px; color: var(--fg); text-wrap: balance;
+      "
+    >About</h2>
+    <p style="font-family:var(--font-body);font-size:17px;line-height:1.55;color:var(--fg-muted);margin:0;text-wrap:pretty;">
+      Add your about section content here.
+    </p>
+  </header>
+</section>
