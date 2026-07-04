@@ -40,7 +40,7 @@
 >
   <div style="max-width:1080px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;">
     <a href="#home" on:click={click('home')} style="display:flex;align-items:center;gap:10px;border:0;">
-      <img src="../../assets/logo.svg" alt="Recompiled" style="height:30px;" />
+      <img src="../../assets/recompiled_podcast_logo.png" alt="Recompiled" style="height:30px;" />
     </a>
 
     <div class="rc-nav-desktop" style="display:flex;align-items:center;gap:4px;">

@@ -2,6 +2,22 @@
   import { SOCIAL_SVGS } from './data.js';
 
   export let host;
+
+  function renderSocialIcon(icon) {
+    if (icon === 'linkedin') {
+      return `<img src="/assets/linkedin.svg" alt="" width="16" height="16" style="display:block;filter:brightness(0) invert(1);" />`;
+    }
+
+    if (icon === 'github') {
+      return `<img src="/assets/github.svg" alt="" width="16" height="16" style="display:block;filter:brightness(0) invert(1);" />`;
+    }
+
+    if (icon === 'link') {
+      return `<img src="/assets/user.svg" alt="" width="16" height="16" style="display:block;filter:brightness(0) invert(1);" />`;
+    }
+
+    return SOCIAL_SVGS[icon] || SOCIAL_SVGS.link;
+  }
 </script>
 
 <article
@@ -39,9 +55,10 @@
     style="
       font-family: var(--font-body); font-size: 15px; line-height: 1.6;
       color: var(--on-surface-inverse-muted); margin: 0; text-wrap: pretty;
+      flex: 1;
     "
   >{host.bio}</p>
-  <div style="display:flex;gap:6px;">
+  <div style="display:flex;gap:6px;align-items:center;justify-content:flex-start;margin-top:auto;">
     {#each host.links as [icon, href]}
       <a
         {href}
@@ -52,8 +69,9 @@
           display: flex; align-items: center; justify-content: center;
           border: 1px solid var(--border);
           transition: all 120ms var(--ease-out);
+          flex-shrink: 0;
         "
-      >{@html SOCIAL_SVGS[icon] || SOCIAL_SVGS.link}</a>
+      >{@html renderSocialIcon(icon)}</a>
     {/each}
   </div>
 </article>
