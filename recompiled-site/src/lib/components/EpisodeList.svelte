@@ -33,7 +33,7 @@
       >Latest episodes</h2>
     </div>
   </header>
-  <div style="display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));">
+  <div style="display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));">
     {#each paginatedEpisodes as ep, i (ep.n)}
       <EpisodeCard
         {ep}

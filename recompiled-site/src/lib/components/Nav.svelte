@@ -38,29 +38,21 @@
     transition: all 200ms var(--ease-out);
   "
 >
-  <div style="max-width:1080px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;">
-    <a href="#home" on:click={click('home')} style="display:flex;align-items:center;gap:10px;border:0;">
-      <img src="../../assets/recompiled_podcast_logo.png" alt="Recompiled" style="height:30px;" />
+  <div class="nav-inner">
+    <a href="#home" on:click={click('home')} class="nav-brand">
+      <img src="../../assets/recompiled_podcast_logo.png" alt="Recompiled" class="nav-logo" />
     </a>
 
-    <div class="rc-nav-desktop" style="display:flex;align-items:center;gap:4px;">
+    <div class="rc-nav-desktop">
       {#each items as [id, label]}
         <a
           href={`#${id}`}
           on:click={click(id)}
-          style="
-            font-family: var(--font-body);
-            font-size: 14px;
-            font-weight: 500;
-            color: {active === id ? 'var(--brand)' : 'var(--fg)'};
-            padding: 8px 14px;
-            border-radius: 8px;
-            border: 0;
-            transition: color 120ms var(--ease-out);
-          "
+          class="nav-link"
+          style="color: {active === id ? 'var(--brand)' : 'var(--fg)'};"
         >{label}</a>
       {/each}
-      <span style="width:1px;height:20px;background:var(--border);margin:0 10px;"></span>
+      <span class="nav-divider"></span>
       <Button variant="primary" size="sm" icon="headphones" on:click={onListen}>Listen</Button>
     </div>
 
@@ -68,24 +60,116 @@
       class="rc-nav-mobile"
       on:click={() => (mobileOpen = !mobileOpen)}
       aria-label="Menu"
-      style="display:none;background:transparent;border:0;padding:8px;cursor:pointer;color:var(--fg);"
+      style="background:transparent;border:0;padding:8px;cursor:pointer;color:var(--fg);"
     >
       <Icon name={mobileOpen ? 'x' : 'menu'} size={22} />
     </button>
   </div>
 
   {#if mobileOpen}
-    <div style="background:var(--bg-elevated);border-top:1px solid var(--border);padding:10px 24px 18px;display:flex;flex-direction:column;gap:4px;">
+    <div class="mobile-menu">
       {#each items as [id, label]}
         <a
           href={`#${id}`}
           on:click={click(id)}
-          style="font-family:var(--font-body);font-size:16px;font-weight:500;color:var(--fg);padding:12px 4px;border:0;border-bottom:1px solid var(--border);"
+          class="mobile-menu-link"
         >{label}</a>
       {/each}
-      <div style="margin-top:12px;">
+      <div class="mobile-menu-button">
         <Button variant="primary" size="md" icon="headphones" on:click={onListen}>Listen on Spotify</Button>
       </div>
     </div>
   {/if}
 </nav>
+
+<style>
+  .nav-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 14px clamp(16px, 4vw, 24px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 0;
+  }
+
+  .nav-logo {
+    height: 30px;
+  }
+
+  .rc-nav-desktop {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .nav-link {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 8px;
+    border: 0;
+    transition: color 120ms var(--ease-out);
+    white-space: nowrap;
+  }
+
+  .nav-divider {
+    width: 1px;
+    height: 20px;
+    background: var(--border);
+    margin: 0 10px;
+  }
+
+  .rc-nav-mobile {
+    display: none;
+  }
+
+  .mobile-menu {
+    background: var(--bg-elevated);
+    border-top: 1px solid var(--border);
+    padding: 10px 24px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .mobile-menu-link {
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--fg);
+    padding: 12px 4px;
+    border: 0;
+    border-bottom: 1px solid var(--border);
+    text-decoration: none;
+  }
+
+  .mobile-menu-button {
+    margin-top: 12px;
+  }
+
+  @media (max-width: 720px) {
+    .rc-nav-desktop {
+      display: none;
+    }
+
+    .rc-nav-mobile {
+      display: inline-flex;
+    }
+
+    .nav-inner {
+      justify-content: space-between;
+    }
+  }
+</style>
