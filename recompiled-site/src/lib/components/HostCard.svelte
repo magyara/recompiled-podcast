@@ -16,6 +16,10 @@
       return `<img src="/assets/user.svg" alt="" width="16" height="16" style="display:block;filter:brightness(0) invert(1);" />`;
     }
 
+    if (icon === 'art') {
+      return `<img src="/assets/paint.svg" alt="" width="16" height="16" style="display:block;filter:brightness(0) invert(1);" />`;
+    }
+
     return SOCIAL_SVGS[icon] || SOCIAL_SVGS.link;
   }
 </script>
@@ -46,7 +50,7 @@
     <h2>{host.name}</h2>
     <div
       style="
-        font-family: var(--font-body); font-size: 13px; font-weight: 500;
+        font-family: var(--font-body); font-size: 13px; font-weight: 700;
         color: var(--on-surface-inverse-muted); margin-top: 2px;
       "
     >{host.role}</div>
@@ -62,6 +66,8 @@
     {#each host.links as [icon, href]}
       <a
         {href}
+        target="_blank"
+        rel="noopener noreferrer"
         aria-label={icon}
         style="
           width: 34px; height: 34px; border-radius: 8px;

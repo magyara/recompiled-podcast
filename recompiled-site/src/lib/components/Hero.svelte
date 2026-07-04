@@ -48,7 +48,7 @@
         text-wrap: pretty;
       "
     >
-      Complex topics broken down and recompiled with diverse perspectives and a touch of humor
+      We take in the latest slop and drama about technology and engineering and recompile it into <i>different</i> slop and drama.
     </p>
     <div style="display:flex;gap:10px;margin-top:36px;flex-wrap:wrap;">
       <Button variant="primary" size="lg" icon="play" on:click={onListen}>Listen on Spotify</Button>

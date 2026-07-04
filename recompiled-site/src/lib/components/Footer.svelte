@@ -38,7 +38,7 @@
     <div>
       <img src="../../assets/recompiled_podcast_logo.png" style="height:30px;" alt="Recompiled" />
       <p style="font-family:var(--font-body);font-size:13px;color:var(--fg-muted);margin-top:14px;max-width:280px;line-height:1.55;">
-        A podcast about engineering, rebuilt weekly. Recorded over a bad connection. Mixed in post.
+        What are you doing at the bottom of the page? Just listen to our podcast already!
       </p>
     </div>
     {#each cols as [title, items]}
