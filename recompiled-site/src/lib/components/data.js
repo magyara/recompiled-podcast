@@ -20,7 +20,7 @@ export const HOSTS = [
   {
     name: 'Ariel Magyar',
     role: 'Senior Software Engineer',
-    bio: 'Ariel is a badass software engineer with 8+ years of experience in the automotive and fintech industries. She is a self-described generalist because she loves software development just as much as team and project management. Her indecisiveness perhaps comes from her creative background where she moonlights as an artist in a local art league. ',
+    bio: 'Ariel is a badass software engineer with 8+ years of experience in the automotive and fintech industries. She is a self-described generalist because she loves software development just as much as people leadership and project management. Her indecisiveness perhaps comes from her creative background where she moonlights as an artist in a local art league. ',
     img: '../../assets/ariel.jpeg',
     links: [['linkedin', 'https://www.linkedin.com/in/ariel-magyar/'], ['github', 'https://github.com/magyara'], ['art', 'https://www.instagram.com/ari.mag.art/']],
   }

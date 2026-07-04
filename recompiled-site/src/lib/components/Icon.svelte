@@ -1,16 +1,21 @@
 <script>
   export let name;
   export let size = 20;
-  export let color = 'currentColor';
 
-  // Mount-and-after-update hook: ensure Lucide rewrites the placeholder.
-  import { afterUpdate, onMount } from 'svelte';
-  const refresh = () => { if (window.lucide) window.lucide.createIcons(); };
-  onMount(refresh);
-  afterUpdate(refresh);
+  const iconMap = {
+    headphones: '/assets/headphones.svg',
+    play: '/assets/play.svg',
+    pause: '/assets/play.svg',
+    menu: '/assets/headphones.svg',
+    x: '/assets/headphones.svg'
+  };
+
+  $: src = iconMap[name] || '/assets/headphones.svg';
 </script>
 
-<i
-  data-lucide={name}
-  style="width:{size}px;height:{size}px;color:{color};display:inline-flex;"
-></i>
+<img
+  {src}
+  alt=""
+  aria-hidden="true"
+  style="width:{size}px;height:{size}px;display:inline-block;object-fit:contain;"
+/>
