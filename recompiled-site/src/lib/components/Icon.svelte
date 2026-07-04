@@ -5,6 +5,7 @@
   const iconMap = {
     headphones: '/assets/headphones.svg',
     play: '/assets/play.svg',
+    play_banner: '/assets/play_banner.svg',
     pause: '/assets/play.svg',
     menu: '/assets/headphones.svg',
     x: '/assets/headphones.svg'

@@ -51,7 +51,7 @@
       We take in the latest slop and drama about technology and engineering and recompile it into <i>different</i> slop and drama.
     </p>
     <div style="display:flex;gap:10px;margin-top:36px;flex-wrap:wrap;">
-      <Button variant="primary" size="lg" icon="play" on:click={onListen}>Listen on Spotify</Button>
+      <Button variant="primary" size="lg" icon="play" iconName="play_banner" on:click={onListen}>Listen on Spotify</Button>
       <Button variant="secondary" size="lg" on:click={onBrowse}>All episodes</Button>
     </div>
   </div>

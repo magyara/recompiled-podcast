@@ -34,7 +34,10 @@
       "
     >About</h2>
     <p style="font-family:var(--font-body);font-size:17px;line-height:1.55;color:var(--fg-muted);margin:0;text-wrap:pretty;">
-      We got tired of complaining just to each other and decided to post those opinions on the Internet for all to hear. <b>Warning: Episode content may include raw speculation about the future of AI, quacked out names of people we're talking about, cat noises in the background, and actually helpful content from real software engineers.</b>
+      We got tired of gabbing just to each other and decided to post those opinions on the Internet for all to hear. 
+    </p>
+    <p style="font-family:var(--font-body);font-size:17px;line-height:1.55;color:var(--fg-muted);margin:24px 0 0;text-wrap:pretty;">
+      <b>Warning: Episode content may include raw speculation about the future of AI, quacked out names of people we're talking about, cat noises in the background, and actually helpful content from real software engineers.</b>
     </p>
     <hr style="border:0;height:1px;background:var(--fg-muted);opacity:0.12;margin:20px 0;width:100%;" />
     <p style="font-family:var(--font-body);font-size:17px;line-height:1.55;color:var(--fg-muted);margin:24px 0 0;text-wrap:pretty;">

@@ -4,6 +4,7 @@
   export let variant = 'primary';   // primary | secondary | soft | ghost | inverse
   export let size = 'md';           // sm | md | lg
   export let icon = null;
+  export let iconName = null;
   export let type = 'button';
 
   const variants = {
@@ -35,6 +36,6 @@
 </script>
 
 <button {type} class="rc-btn" style={style} on:click>
-  {#if icon}<Icon name={icon} size={16} />{/if}
+  {#if icon}<Icon name={iconName || icon} size={16} />{/if}
   <slot />
 </button>
