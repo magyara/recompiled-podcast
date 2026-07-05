@@ -44,7 +44,7 @@
       Abi and Ariel met in undergrad where they both studied Computer Engineering. They bonded by chatting on the Rapid 50 bus after attending a self defense class hosted by the Society of Women Engineers. They've followed each other to two different universities, two different companies, and two different states. On the first Friday of each month, they catch up over Discord with their treasured “Girls Group” from undergrad. 
     </p>
     <p style="font-family:var(--font-body);font-size:17px;line-height:1.55;color:var(--fg-muted);margin:24px 0 0;text-wrap:pretty;">
-      Both are graduate students enrolled in the Georgia Institute of Technology's Online Master of Science in Computer Science Program with a specialization in Artificial Intelligence and will graduate within the next year or so. 
+      Both are graduate students enrolled in the Georgia Institute of Technology's Online Master of Science in Computer Science program with a specialization in Artificial Intelligence and will graduate within the next year or so. 
     </p>
   </header>
 </section>
