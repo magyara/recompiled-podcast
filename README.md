@@ -72,7 +72,7 @@ npm run preview
 This project is configured for Vercel via @sveltejs/adapter-vercel.
 
 Typical deployment flow:
-1. Push changes to your Git provider branch.
+1. Push changes to main (work off of dev branch and merge to main with PR).
 2. Vercel detects the push and runs build.
 3. If build passes, Vercel publishes a new deployment.
 
