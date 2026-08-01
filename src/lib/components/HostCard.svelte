@@ -31,7 +31,7 @@
   class="host-card"
   style="
     position: relative;
-    background: var(--surface-inverse);
+    background: color-mix(in srgb, var(--surface-inverse) 70%, var(--violet-400));
     color: var(--on-surface-inverse);
     border: 1px solid var(--border);
     border-radius: 16px;
