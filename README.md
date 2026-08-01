@@ -1,42 +1,88 @@
-# sv
+# Recompiled Podcast Site
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Recompiled is a SvelteKit site for the Recompiled podcast. It includes:
+- A custom landing page with hero, episodes, hosts, and about sections
+- A server endpoint that fetches and parses the podcast RSS feed
+- Styling and motion tuned for desktop and mobile
 
-## Creating a project
+## Stack
 
-If you're seeing this, you've probably already done this step. Congrats!
+- SvelteKit + Vite
+- TypeScript (with Svelte type checking)
+- ESLint + Prettier
+- Vitest
+- Vercel adapter for deployment
+
+## Local Development
+
+Install dependencies:
 
 ```sh
-# create a new project
-npx sv create my-app
+npm install
 ```
 
-To recreate this project with the same configuration:
-
-```sh
-# recreate this project
-npx sv@0.15.3 create --template minimal --types ts --add prettier eslint vitest="usages:unit,component" --install npm recompiled-site
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+Start dev server:
 
 ```sh
 npm run dev
+```
 
-# or start the server and open the app in a new browser tab
+Start dev server and open browser:
+
+```sh
 npm run dev -- --open
 ```
 
-## Building
+## Quality Checks
 
-To create a production version of your app:
+Type and Svelte checks:
+
+```sh
+npm run check
+```
+
+Linting:
+
+```sh
+npm run lint
+```
+
+Unit tests:
+
+```sh
+npm run test
+```
+
+## Build
+
+Create production build:
 
 ```sh
 npm run build
 ```
 
-You can preview the production build with `npm run preview`.
+Preview production build locally:
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+```sh
+npm run preview
+```
+
+## Deployment and Hosting (Vercel)
+
+This project is configured for Vercel via @sveltejs/adapter-vercel.
+
+Typical deployment flow:
+1. Push changes to main (work off of dev branch and merge to main with PR).
+2. Vercel detects the push and runs build.
+3. If build passes, Vercel publishes a new deployment.
+
+Optional environment variable:
+- PODCAST_RSS_URL: Override the default RSS feed URL used by the server endpoint.
+
+If PODCAST_RSS_URL is not set, the app uses the default podcast RSS URL in the API route.
+
+## Project Notes
+
+- Main page route: src/routes/+page.svelte
+- RSS API route: src/routes/api/spotify/+server.ts
+- Global styles: src/app.css

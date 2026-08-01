@@ -33,7 +33,7 @@
   --signal-info: var(--violet-500);
 
   /* ---------- Semantic tokens -------------------- */
-  --bg: #faf9fd; /* page bg — warm-cool off-white */
+  --bg: #f2eff8; /* page bg — slightly deeper warm-cool off-white */
   --bg-elevated: #ffffff; /* cards, panels */
   --bg-sunken: var(--violet-50);
   --bg-inverse: var(--plum-900);
@@ -240,9 +240,30 @@ a:hover {
   color: var(--brand-hover);
 }
 
-:focus-visible {
-  outline: 2px solid var(--focus-ring);
+:where(a[href], button, [role="button"]) {
+  transition:
+    color var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    filter var(--dur-fast) var(--ease-out);
+}
+
+:where(a[href], button, [role="button"]):not([disabled]):hover {
+  filter: saturate(1.12) brightness(1.06);
+}
+
+:where(a[href], button, [role="button"]):focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--focus-ring) 86%, white);
   outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(a[href], button, [role="button"]) {
+    transition:
+      color var(--dur-fast) linear,
+      background-color var(--dur-fast) linear,
+      border-color var(--dur-fast) linear;
+  }
 }
 
 ::selection {
@@ -284,15 +305,4 @@ a:hover {
   color: var(--fg-muted);
   margin: 0;
   text-wrap: pretty;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
 }
