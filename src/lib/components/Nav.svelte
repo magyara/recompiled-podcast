@@ -1,10 +1,12 @@
 <script>
-  import { onMount } from 'svelte';
-  import Icon from './Icon.svelte';
-  import Button from './Button.svelte';
+  import { onMount } from "svelte";
+  import Icon from "./Icon.svelte";
+  import Button from "./Button.svelte";
 
-  export let active = 'home';
-  export let onNavigate = () => {};
+  export let active = "home";
+  /** @type {(id: string) => void} */
+  export let onNavigate = (_id) => {};
+  /** @type {() => void} */
   export let onListen = () => {};
 
   let scrolled = false;
@@ -12,18 +14,24 @@
 
   onMount(() => {
     const onScroll = () => (scrolled = window.scrollY > 12);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   });
 
   const items = [
-    ['episodes', 'Episodes'],
-    ['hosts', 'Hosts'],
-    ['about', 'About'],
+    ["episodes", "Episodes"],
+    ["hosts", "Hosts"],
+    ["about", "About"],
   ];
 
+  /** @param {string} id */
   function click(id) {
-    return (e) => { e.preventDefault(); onNavigate(id); mobileOpen = false; };
+    /** @param {MouseEvent} e */
+    return (e) => {
+      e.preventDefault();
+      onNavigate(id);
+      mobileOpen = false;
+    };
   }
 </script>
 
@@ -39,21 +47,28 @@
   "
 >
   <div class="nav-inner">
-    <a href="#home" on:click={click('home')} class="nav-brand">
-      <img src="../../assets/recompiled_podcast_logo.png" alt="Recompiled" class="nav-logo" />
+    <a href="#home" on:click={click("home")} class="nav-brand">
+      <img
+        src="../../assets/recompiled_podcast_logo.png"
+        alt="Recompiled"
+        class="nav-logo"
+      />
     </a>
 
     <div class="rc-nav-desktop">
-      {#each items as [id, label]}
+      {#each items as [id, label] (id)}
         <a
           href={`#${id}`}
           on:click={click(id)}
           class="nav-link"
           style="color: {active === id ? 'var(--brand)' : 'var(--fg)'};"
-        >{label}</a>
+          >{label}</a
+        >
       {/each}
       <span class="nav-divider"></span>
-      <Button variant="primary" size="sm" icon="headphones" on:click={onListen}>Listen</Button>
+      <Button variant="primary" size="sm" icon="headphones" on:click={onListen}
+        >Listen</Button
+      >
     </div>
 
     <button
@@ -62,21 +77,24 @@
       aria-label="Menu"
       style="background:transparent;border:0;padding:8px;cursor:pointer;color:var(--fg);"
     >
-      <Icon name={mobileOpen ? 'x' : 'menu'} size={22} />
+      <Icon name={mobileOpen ? "x" : "menu"} size={22} />
     </button>
   </div>
 
   {#if mobileOpen}
     <div class="mobile-menu">
-      {#each items as [id, label]}
-        <a
-          href={`#${id}`}
-          on:click={click(id)}
-          class="mobile-menu-link"
-        >{label}</a>
+      {#each items as [id, label] (id)}
+        <a href={`#${id}`} on:click={click(id)} class="mobile-menu-link"
+          >{label}</a
+        >
       {/each}
       <div class="mobile-menu-button">
-        <Button variant="primary" size="md" icon="headphones" on:click={onListen}>Listen on Spotify</Button>
+        <Button
+          variant="primary"
+          size="md"
+          icon="headphones"
+          on:click={onListen}>Listen on Spotify</Button
+        >
       </div>
     </div>
   {/if}

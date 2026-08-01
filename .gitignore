@@ -2,3 +2,5 @@
 .DS_Store
 node_modules
 .svelte-kit
+.vercel
+.vercel/output

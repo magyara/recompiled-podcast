@@ -1,28 +1,15 @@
 <script>
-  import Eyebrow from './Eyebrow.svelte';
-  import Icon from './Icon.svelte';
+  import Eyebrow from "./Eyebrow.svelte";
+  import Icon from "./Icon.svelte";
 
   export let ep;
   export let cover;
   export let isPlaying = false;
+  /** @type {(ep: any) => void} */
   export let onPlay = () => {};
 
   let isExpanded = false;
 </script>
-
-<style>
-  :global(div > p) {
-    overflow-wrap: break-word;
-    word-break: break-word;
-  }
-  :global(div > p > a) {
-    overflow-wrap: break-word;
-    word-break: break-word;
-  }
-  a {
-    text-decoration: none !important;
-  }
-</style>
 
 <article
   style="
@@ -40,8 +27,12 @@
   <div
     style="
       width: 64px; height: 64px; border-radius: 10px; flex-shrink: 0;
-      background: {ep.cover && ep.cover.startsWith('http') ? 'transparent' : cover};
-      background-image: {ep.cover && ep.cover.startsWith('http') ? `url('${ep.cover}')` : 'none'};
+      background: {ep.cover && ep.cover.startsWith('http')
+      ? 'transparent'
+      : cover};
+      background-image: {ep.cover && ep.cover.startsWith('http')
+      ? `url('${ep.cover}')`
+      : 'none'};
       background-size: cover;
       background-position: center;
       display: flex; align-items: center; justify-content: center;
@@ -50,8 +41,11 @@
     "
   ></div>
   <div style="flex:1;min-width:0;">
-    <Eyebrow>EP {String(ep.n).padStart(3,'0')} &middot; {ep.dur} &middot; {ep.date}</Eyebrow>
+    <Eyebrow
+      >EP {String(ep.n).padStart(3, "0")} &middot; {ep.dur} &middot; {ep.date}</Eyebrow
+    >
     <a
+      class="episode-title-link"
       href={ep.spotifyUrl}
       target="_blank"
       rel="noopener noreferrer"
@@ -63,10 +57,8 @@
         text-decoration: none;
         border-bottom: none;
         transition: color 150ms var(--ease-out);
-      "
-      on:mouseenter={(e) => e.target.style.color = 'var(--brand)'}
-      on:mouseleave={(e) => e.target.style.color = 'var(--fg)'}
-    >{ep.title}</a>
+      ">{ep.title}</a
+    >
     <div
       style="
         font-family: var(--font-body); font-size: 13px; line-height: 1.5;
@@ -94,7 +86,7 @@
         margin: -8px 0 0 0;
       "
     >
-      {isExpanded ? 'Show less' : 'Show more'}
+      {isExpanded ? "Show less" : "Show more"}
     </button>
     <div style="display:flex;gap:6px;flex-wrap:wrap;">
       {#each ep.tags as t}
@@ -107,8 +99,8 @@
             border: 1px solid var(--border-strong);
             padding: 4px 10px;
             border-radius: 999px;
-          "
-        >{t}</span>
+          ">{t}</span
+        >
       {/each}
     </div>
   </div>
@@ -117,6 +109,7 @@
     target="_blank"
     rel="noopener noreferrer"
     aria-label="Open episode on Spotify"
+    on:click={() => onPlay(ep)}
     style="
       width: 40px; height: 40px; border-radius: 999px; flex-shrink: 0;
       background: var(--brand-soft);
@@ -129,3 +122,25 @@
     <Icon name="play" size={14} />
   </a>
 </article>
+
+<style>
+  :global(div > p) {
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+  :global(div > p > a) {
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+  a {
+    text-decoration: none !important;
+  }
+
+  .episode-title-link {
+    color: var(--fg);
+  }
+
+  .episode-title-link:hover {
+    color: var(--brand);
+  }
+</style>

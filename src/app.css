@@ -33,10 +33,10 @@
   --signal-info:    var(--violet-500);
 
   /* ---------- Semantic tokens -------------------- */
-  --bg:           #faf9fd;        /* page bg — warm-cool off-white */
-  --bg-elevated:  #ffffff;        /* cards, panels */
-  --bg-sunken:    var(--violet-50);
-  --bg-inverse:   var(--plum-900);
+  --bg: #f2eff8; /* page bg — slightly deeper warm-cool off-white */
+  --bg-elevated: #ffffff; /* cards, panels */
+  --bg-sunken: var(--violet-50);
+  --bg-inverse: var(--plum-900);
 
   --fg:           var(--plum-900);
   --fg-muted:     var(--plum-500);
@@ -227,3 +227,39 @@ a {
 a:hover { color: var(--brand-hover); }
 
 ::selection { background: var(--violet-200); color: var(--plum-900); }
+
+.content-shell {
+  max-width: var(--max-w-content);
+  margin: 0 auto;
+}
+
+.section-shell {
+  max-width: var(--max-w-content);
+  margin: 0 auto;
+  padding: clamp(64px, 9vw, 100px) 24px;
+}
+
+.section-head {
+  margin-bottom: 36px;
+  max-width: var(--max-w-prose);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(28px, 4.4vw, 44px);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin: 10px 0 14px;
+  color: var(--fg);
+  text-wrap: balance;
+}
+
+.section-copy {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--fg-muted);
+  margin: 0;
+  text-wrap: pretty;
+}
