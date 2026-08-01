@@ -55,7 +55,7 @@
 
 <Nav {active} onNavigate={navigate} onListen={openCreatorsPage} />
 <div id="home">
-  <Hero onListen={openSpotifyShow} onBrowse={() => navigate("episodes")} />
+  <Hero onListen={openSpotifyShow} />
 </div>
 <div id="episodes">
   <EpisodeList episodes={data.episodes} />

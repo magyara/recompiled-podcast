@@ -1,14 +1,44 @@
 <script>
-  import Button from './Button.svelte';
+  import Button from "./Button.svelte";
 
   export let onListen = () => {};
-  export let onBrowse = () => {};
 </script>
+
+<section class="hero">
+  <div class="hero-inner content-shell">
+    <h1 class="hero-title">
+      A vaugely serious podcast about
+      <span class="hero-title-accent">software engineering</span>.
+    </h1>
+    <p class="hero-copy">
+      We take in the latest slop and drama about technology and engineering and
+      recompile it into <i>different</i> slop and drama.
+    </p>
+    <div class="hero-actions">
+      <Button
+        variant="primary"
+        bordered={true}
+        size="lg"
+        icon="play"
+        iconName="play_banner"
+        on:click={onListen}>Listen on Spotify</Button
+      >
+    </div>
+  </div>
+  <div class="hero-marquee" aria-hidden="true">
+    <div class="hero-marquee-track">
+      <span class="hero-marquee-item"
+        >Code something fun today! <span class="hero-marquee-cat">(=^.^=)</span
+        ></span
+      >
+    </div>
+  </div>
+</section>
 
 <style>
   .hero {
     position: relative;
-    background-image: url('/assets/ada_banner.png');
+    background-image: url("/assets/ada_banner.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -109,24 +139,3 @@
     }
   }
 </style>
-
-<section class="hero">
-  <div class="hero-inner content-shell">
-    <h1 class="hero-title">
-      A vaugely serious podcast about
-      <span class="hero-title-accent">software engineering</span>.
-    </h1>
-    <p class="hero-copy">
-      We take in the latest slop and drama about technology and engineering and recompile it into <i>different</i> slop and drama.
-    </p>
-    <div class="hero-actions">
-      <Button variant="primary" size="lg" icon="play" iconName="play_banner" on:click={onListen}>Listen on Spotify</Button>
-      <Button variant="secondary" size="lg" on:click={onBrowse}>All episodes</Button>
-    </div>
-  </div>
-  <div class="hero-marquee" aria-hidden="true">
-    <div class="hero-marquee-track">
-      <span class="hero-marquee-item">Code something fun today! <span class="hero-marquee-cat">(=^.^=)</span></span>
-    </div>
-  </div>
-</section>

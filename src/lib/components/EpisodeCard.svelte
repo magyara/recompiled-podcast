@@ -12,6 +12,7 @@
 </script>
 
 <article
+  class="episode-card"
   style="
     background: var(--bg-elevated);
     border: 1px solid {isPlaying ? 'var(--border-brand)' : 'var(--border)'};
@@ -21,12 +22,14 @@
     gap: 16px;
     align-items: flex-start;
     transition: all 200ms var(--ease-out);
-    box-shadow: none;
+    box-shadow: 0 14px 28px -22px rgba(10, 6, 24, 0.85), 0 6px 12px rgba(10, 6, 24, 0.16);
   "
 >
   <div
     style="
       width: 64px; height: 64px; border-radius: 10px; flex-shrink: 0;
+      border: 1px solid color-mix(in srgb, var(--border-strong) 78%, white);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04), 0 6px 12px rgba(10, 6, 24, 0.2);
       background: {ep.cover && ep.cover.startsWith('http')
       ? 'transparent'
       : cover};
@@ -124,6 +127,25 @@
 </article>
 
 <style>
+  .episode-card {
+    transform: translateY(0) scale(1);
+    will-change: transform, box-shadow;
+  }
+
+  .episode-card:hover {
+    transform: translateY(-5px) scale(1.012);
+    box-shadow:
+      0 22px 38px -24px rgba(10, 6, 24, 0.95),
+      0 10px 20px rgba(10, 6, 24, 0.22);
+  }
+
+  .episode-card:focus-within {
+    transform: translateY(-3px) scale(1.008);
+    box-shadow:
+      0 18px 30px -22px rgba(10, 6, 24, 0.9),
+      0 8px 16px rgba(10, 6, 24, 0.2);
+  }
+
   :global(div > p) {
     overflow-wrap: break-word;
     word-break: break-word;
@@ -142,5 +164,13 @@
 
   .episode-title-link:hover {
     color: var(--brand);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .episode-card,
+    .episode-card:hover,
+    .episode-card:focus-within {
+      transform: none;
+    }
   }
 </style>

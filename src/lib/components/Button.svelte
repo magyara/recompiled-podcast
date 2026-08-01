@@ -11,6 +11,7 @@
   export let iconName = null;
   /** @type {'button' | 'submit' | 'reset'} */
   export let type = "button";
+  export let bordered = false;
 
   const variants =
     /** @type {Record<'primary' | 'secondary' | 'soft' | 'ghost' | 'inverse', string>} */ ({
@@ -40,6 +41,11 @@
     transition: all 120ms var(--ease-out);
     ${sizes[size]}
     ${variants[variant]}
+    ${
+      bordered
+        ? "border:3px solid color-mix(in srgb, var(--border-strong) 78%, white);"
+        : ""
+    }
   `;
 </script>
 
