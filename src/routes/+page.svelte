@@ -4,8 +4,6 @@
   import Hero from '$lib/components/Hero.svelte';
   import EpisodeList from '$lib/components/EpisodeList.svelte';
   import Hosts from '$lib/components/Hosts.svelte';
-  import Player from '$lib/components/Player.svelte';
-  import Subscribe from '$lib/components/Subscribe.svelte';
   import Footer from '$lib/components/Footer.svelte';
 
   export let data;
@@ -15,6 +13,7 @@
   const creatorsUrl = 'https://creators.spotify.com/pod/profile/abi-lovelace/episodes';
   const sectionIds = ['home', 'episodes', 'hosts', 'about'];
 
+  /** @param {string} id */
   function navigate(id) {
     active = id;
     const target = document.getElementById(id);
@@ -61,6 +60,4 @@
   <EpisodeList episodes={data.episodes} />
 </div>
 <Hosts />
-<Player />
-<!-- <Subscribe /> -->
 <Footer />

@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Artifika&family=Courgette&family=Kavoon&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Artifika&family=Courgette&family=Kavoon&display=swap");
 
 :root {
   /* ---------- Brand palette ----------------------------------- */
-  --violet-50:  #f4f1ff;
+  --violet-50: #f4f1ff;
   --violet-100: #ebe4ff;
   --violet-200: #d6c8ff;
   --violet-300: #b8a1ff;
@@ -15,7 +15,7 @@
   --violet-900: #241055;
   --violet-950: #14082f;
 
-  --plum-50:  #f7f6fb;
+  --plum-50: #f7f6fb;
   --plum-100: #ecebf3;
   --plum-200: #d6d3e3;
   --plum-300: #b1adc6;
@@ -29,71 +29,71 @@
 
   --signal-success: #2bb673;
   --signal-warning: #f0a92f;
-  --signal-error:   #e54a5f;
-  --signal-info:    var(--violet-500);
+  --signal-error: #e54a5f;
+  --signal-info: var(--violet-500);
 
   /* ---------- Semantic tokens -------------------- */
-  --bg:           #faf9fd;        /* page bg — warm-cool off-white */
-  --bg-elevated:  #ffffff;        /* cards, panels */
-  --bg-sunken:    var(--violet-50);
-  --bg-inverse:   var(--plum-900);
+  --bg: #faf9fd; /* page bg — warm-cool off-white */
+  --bg-elevated: #ffffff; /* cards, panels */
+  --bg-sunken: var(--violet-50);
+  --bg-inverse: var(--plum-900);
 
-  --fg:           var(--plum-900);
-  --fg-muted:     var(--plum-500);
-  --fg-subtle:    var(--plum-400);
-  --fg-inverse:   #ffffff;
-  --fg-on-brand:  #ffffff;
+  --fg: var(--plum-900);
+  --fg-muted: var(--plum-500);
+  --fg-subtle: var(--plum-400);
+  --fg-inverse: #ffffff;
+  --fg-on-brand: #ffffff;
 
-  --brand:        var(--violet-500);
-  --brand-hover:  var(--violet-600);
-  --brand-soft:   var(--violet-100);
-  --brand-fg:     var(--violet-700);
+  --brand: var(--violet-500);
+  --brand-hover: var(--violet-600);
+  --brand-soft: var(--violet-100);
+  --brand-fg: var(--violet-700);
 
-  --banner-bg:     var(--violet-300);
+  --banner-bg: var(--violet-300);
 
   /* Inverse / "bright hero" surface — the saturated brand moment.
      Use for the subscribe block, brand callouts, and the inverse card. */
-  --surface-inverse:       var(--violet-700);   /* #4f25b8 — fill */
-  --surface-inverse-glow:  rgba(184, 161, 255, 0.55);   /* violet-300 wash */
-  --on-surface-inverse:        #ffffff;
-  --on-surface-inverse-muted:  var(--violet-100);
+  --surface-inverse: var(--violet-700); /* #4f25b8 — fill */
+  --surface-inverse-glow: rgba(184, 161, 255, 0.55); /* violet-300 wash */
+  --on-surface-inverse: #ffffff;
+  --on-surface-inverse-muted: var(--violet-100);
   --on-surface-inverse-eyebrow: var(--violet-200);
 
-  --border:       #ebe7f3;
-  --border-strong:#d3cce4;
+  --border: #ebe7f3;
+  --border-strong: #d3cce4;
   --border-brand: var(--violet-300);
 
-  --focus-ring:   var(--violet-400);
+  --focus-ring: var(--violet-400);
 
   /* ---------- Type ------------------------------------------- */
-  --font-display: 'Artifika', 'Söhne', 'Helvetica Neue', sans-serif;
-  --font-body:    'Manrope', 'Söhne', 'Helvetica Neue', sans-serif;
-  --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --font-display: "Artifika", "Söhne", "Helvetica Neue", sans-serif;
+  --font-body: "Manrope", "Söhne", "Helvetica Neue", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
 
   /* Modular type scale, 1.25 ratio, anchored at 16px body */
-  --text-2xs:  11px;
-  --text-xs:   12px;
-  --text-sm:   14px;
+  --text-2xs: 11px;
+  --text-xs: 12px;
+  --text-sm: 14px;
   --text-base: 16px;
-  --text-md:   18px;
-  --text-lg:   22px;
-  --text-xl:   28px;
-  --text-2xl:  36px;
-  --text-3xl:  48px;
-  --text-4xl:  64px;
-  --text-5xl:  84px;
-  --text-6xl:  112px;
+  --text-md: 18px;
+  --text-lg: 22px;
+  --text-xl: 28px;
+  --text-2xl: 36px;
+  --text-3xl: 48px;
+  --text-4xl: 64px;
+  --text-5xl: 84px;
+  --text-6xl: 112px;
 
-  --leading-tight:  1.05;
-  --leading-snug:   1.2;
+  --leading-tight: 1.05;
+  --leading-snug: 1.2;
   --leading-normal: 1.5;
-  --leading-loose:  1.7;
+  --leading-loose: 1.7;
 
-  --tracking-tight:   -0.02em;
+  --tracking-tight: -0.02em;
   --tracking-display: -0.03em;
-  --tracking-normal:  0em;
-  --tracking-wide:    0.04em;
-  --tracking-mono:    0.02em;
+  --tracking-normal: 0em;
+  --tracking-wide: 0.04em;
+  --tracking-mono: 0.02em;
 
   /* ---------- Spacing scale (4px base) ----------------------- */
   --space-0: 0;
@@ -121,25 +121,29 @@
 
   /* ---------- Shadow + glow ---------------------------------- */
   --shadow-xs: 0 1px 0 rgba(36, 16, 85, 0.04);
-  --shadow-sm: 0 1px 2px rgba(36, 16, 85, 0.06), 0 1px 1px rgba(36, 16, 85, 0.04);
-  --shadow-md: 0 6px 18px -6px rgba(36, 16, 85, 0.16), 0 2px 4px rgba(36, 16, 85, 0.05);
-  --shadow-lg: 0 24px 48px -16px rgba(36, 16, 85, 0.22), 0 4px 8px rgba(36, 16, 85, 0.06);
-  --shadow-inset: inset 0 0 0 1px rgba(124, 82, 255, 0.10);
-  --glow-brand:  0 0 0 1px rgba(124, 82, 255, 0.35), 0 8px 32px -8px rgba(124, 82, 255, 0.55);
+  --shadow-sm:
+    0 1px 2px rgba(36, 16, 85, 0.06), 0 1px 1px rgba(36, 16, 85, 0.04);
+  --shadow-md:
+    0 6px 18px -6px rgba(36, 16, 85, 0.16), 0 2px 4px rgba(36, 16, 85, 0.05);
+  --shadow-lg:
+    0 24px 48px -16px rgba(36, 16, 85, 0.22), 0 4px 8px rgba(36, 16, 85, 0.06);
+  --shadow-inset: inset 0 0 0 1px rgba(124, 82, 255, 0.1);
+  --glow-brand:
+    0 0 0 1px rgba(124, 82, 255, 0.35), 0 8px 32px -8px rgba(124, 82, 255, 0.55);
 
   /* ---------- Motion ----------------------------------------- */
-  --ease-out:     cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in-out:  cubic-bezier(0.65, 0, 0.35, 1);
-  --ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
-  --dur-fast:     120ms;
-  --dur-base:     200ms;
-  --dur-slow:     360ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast: 120ms;
+  --dur-base: 200ms;
+  --dur-slow: 360ms;
 
   /* ---------- Layout ----------------------------------------- */
-  --max-w-prose:    640px;
-  --max-w-content:  1080px;
-  --max-w-wide:     1280px;
-  --grid-gutter:    24px;
+  --max-w-prose: 640px;
+  --max-w-content: 1080px;
+  --max-w-wide: 1280px;
+  --grid-gutter: 24px;
 }
 
 /* =========== Semantic element styles ========================= */
@@ -154,7 +158,8 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-h1, .h1 {
+h1,
+.h1 {
   font-family: var(--font-display);
   font-weight: 700;
   font-size: var(--text-4xl);
@@ -162,21 +167,24 @@ h1, .h1 {
   letter-spacing: var(--tracking-display);
   color: var(--fg);
 }
-h2, .h2 {
+h2,
+.h2 {
   font-family: var(--font-display);
   font-weight: 600;
   font-size: var(--text-2xl);
   line-height: var(--leading-snug);
   letter-spacing: var(--tracking-tight);
 }
-h3, .h3 {
+h3,
+.h3 {
   font-family: var(--font-display);
   font-weight: 600;
   font-size: var(--text-xl);
   line-height: var(--leading-snug);
   letter-spacing: var(--tracking-tight);
 }
-h4, .h4 {
+h4,
+.h4 {
   font-family: var(--font-display);
   font-weight: 600;
   font-size: var(--text-lg);
@@ -193,11 +201,15 @@ p {
   line-height: var(--leading-normal);
   color: var(--fg-muted);
 }
-small, .small {
+small,
+.small {
   font-size: var(--text-sm);
   color: var(--fg-muted);
 }
-code, kbd, samp, .mono {
+code,
+kbd,
+samp,
+.mono {
   font-family: var(--font-mono);
   font-size: 0.92em;
   letter-spacing: var(--tracking-mono);
@@ -224,6 +236,63 @@ a {
   text-underline-offset: 3px;
   transition: color var(--dur-fast) var(--ease-out);
 }
-a:hover { color: var(--brand-hover); }
+a:hover {
+  color: var(--brand-hover);
+}
 
-::selection { background: var(--violet-200); color: var(--plum-900); }
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--violet-200);
+  color: var(--plum-900);
+}
+
+.content-shell {
+  max-width: var(--max-w-content);
+  margin: 0 auto;
+}
+
+.section-shell {
+  max-width: var(--max-w-content);
+  margin: 0 auto;
+  padding: clamp(64px, 9vw, 100px) 24px;
+}
+
+.section-head {
+  margin-bottom: 36px;
+  max-width: var(--max-w-prose);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(28px, 4.4vw, 44px);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin: 10px 0 14px;
+  color: var(--fg);
+  text-wrap: balance;
+}
+
+.section-copy {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--fg-muted);
+  margin: 0;
+  text-wrap: pretty;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
