@@ -1,14 +1,3 @@
-export const EPISODES = [
-  { n: 42, title: 'The database we should have written', dur: '47 min', date: 'May 14', desc: 'Five years in, every team has the same migration. We argue about whether to do it.', tags: ['postgres', 'infra'] },
-  { n: 41, title: 'You don\u2019t need a queue', dur: '52 min', date: 'May 7', desc: 'A cron job and a flag survived everything we threw at it. So why did we add Kafka?', tags: ['queues', 'simplicity'] },
-  { n: 40, title: 'On-call diaries', dur: '38 min', date: 'Apr 30', desc: 'Three pages, two runbooks, one outage that taught us more than the postmortem.', tags: ['on-call', 'reliability'] },
-  { n: 39, title: 'The frontend is a backend now', dur: '61 min', date: 'Apr 23', desc: 'Edge runtimes, server components, and the moment Sana stopped writing useEffect.', tags: ['frontend', 'react'] },
-  { n: 38, title: 'Migrations we regret', dur: '44 min', date: 'Apr 16', desc: 'A long list. We rank them. You will recognize at least three.', tags: ['migrations'] },
-  { n: 37, title: 'Why we still write SQL by hand', dur: '49 min', date: 'Apr 9', desc: 'Yes, even with the ORM. Especially with the ORM.', tags: ['sql', 'ergonomics'] },
-];
-
-export const COVERS = ['#ebe4ff', '#d6c8ff', '#b8a1ff', '#f4f1ff', '#ebe4ff', '#d6c8ff'];
-
 export const HOSTS = [
   {
     name: 'Abigail Lovelace',

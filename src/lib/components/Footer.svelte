@@ -45,8 +45,22 @@
 
   /** @param {string | { label?: string; url?: string }} item */
   function getLinkUrl(item) {
-    if (typeof item === "string") return "#";
+    if (typeof item === "string") {
+      /** @type {Record<string, string>} */
+      const sectionAnchors = {
+        Episodes: "#episodes",
+        Hosts: "#hosts",
+        About: "#about",
+      };
+      return sectionAnchors[item] || "#";
+    }
     return item.url || "#";
+  }
+
+  /** @param {string | { label?: string; url?: string }} item */
+  function shouldOpenInNewTab(item) {
+    const url = getLinkUrl(item);
+    return url.startsWith("http://") || url.startsWith("https://");
   }
 
   /** @param {string | { label?: string; url?: string }} item */
@@ -93,8 +107,8 @@
             <li>
               <a
                 href={getLinkUrl(i)}
-                target="_blank"
-                rel="noopener noreferrer"
+                target={shouldOpenInNewTab(i) ? "_blank" : undefined}
+                rel={shouldOpenInNewTab(i) ? "noopener noreferrer" : undefined}
                 style="font-family:var(--font-body);font-size:14px;color:var(--fg-muted);border:0;"
                 >{getLinkLabel(i)}</a
               >
