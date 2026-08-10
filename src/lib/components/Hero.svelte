@@ -7,7 +7,7 @@
 <section class="hero">
   <div class="hero-inner content-shell">
     <h1 class="hero-title">
-      A vaugely serious podcast about
+      A vaguely serious podcast about
       <span class="hero-title-accent">software engineering</span>.
     </h1>
     <p class="hero-copy">
